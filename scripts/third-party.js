@@ -7,7 +7,6 @@ const GTM_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 
 function createInlineScript(innerHTML, parent) {
   const script = document.createElement('script');
-  script.type = 'text/partytown';
   script.innerHTML = innerHTML;
   parent.appendChild(script);
 }
