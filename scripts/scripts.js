@@ -13,6 +13,8 @@ import {
   loadCSS,
 } from './lib-franklin.js';
 
+import integrateMartech from './third-party.js';
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
@@ -73,6 +75,17 @@ async function loadEager(doc) {
 }
 
 /**
+ * Initializes the PartyTown library for processing third-party libraries.
+ */
+function initPartytown() {
+  window.partytown = {
+    lib: '/scripts/partytown/',
+    forward: ['dataLayer.push'],
+  };
+  import('./partytown/partytown.js');
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
@@ -91,6 +104,9 @@ async function loadLazy(doc) {
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
+
+  integrateMartech();
+  initPartytown();
 }
 
 /**
