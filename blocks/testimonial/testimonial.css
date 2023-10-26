@@ -1,0 +1,16 @@
+main .testimonial > div {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+@media (min-width: 600px) {
+    main .testimonial > div {
+        flex-direction: row;
+    }
+}
+
+main .testimonial img {
+    max-width: 300px;
+    border-radius: 50%;
+}
